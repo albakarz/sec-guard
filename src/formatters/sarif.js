@@ -79,7 +79,7 @@ export function formatSarif(scanResult) {
         tool: {
           driver: {
             name: 'sec-guard',
-            version: '1.0.0',
+            version: '1.0.1',
             informationUri: 'https://github.com/Albakarz/sec-guard',
             rules: Array.from(ruleMap.values())
           }

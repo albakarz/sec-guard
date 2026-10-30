@@ -4,7 +4,7 @@
 export function formatJson(scanResult) {
   const payload = {
     scanner: 'sec-guard',
-    version: '1.0.0',
+    version: '1.0.1',
     timestamp: new Date().toISOString(),
     stats: {
       target: scanResult.target,

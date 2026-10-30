@@ -10,7 +10,7 @@ import { formatMarkdown } from './formatters/markdown.js';
 import { initConfig, initSkill, initAgent, initGithubWorkflow, initGitHook } from './scaffold.js';
 import { ALL_RULES, SEVERITY_LEVELS } from './rules/index.js';
 
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 
 export function parseArgs(rawArgs) {
   const flags = {

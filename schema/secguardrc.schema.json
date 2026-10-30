@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SecGuardConfig",
+  "description": "Configuration schema for sec-guard",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "minSeverity": {
+      "type": "string",
+      "enum": ["CRITICAL", "HIGH", "MEDIUM", "COMPLIANCE", "LOW", "INFO"],
+      "description": "Minimum severity level to report."
+    },
+    "failOn": {
+      "type": "string",
+      "enum": ["CRITICAL", "HIGH", "MEDIUM", "COMPLIANCE", "LOW", "INFO"],
+      "default": "HIGH",
+      "description": "Exit with code 1 if issues >= this severity are found."
+    },
+    "ignoreDirs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Directories to exclude from scanning."
+    },
+    "targetExts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "File extensions to scan."
+    },
+    "disableRules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Rule IDs to disable during scans."
+    },
+    "customRules": {
+      "type": "array",
+      "description": "Custom regex-based security and compliance rules.",
+      "items": {
+        "type": "object",
+        "required": ["id", "pattern"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for this custom rule."
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["CRITICAL", "HIGH", "MEDIUM", "COMPLIANCE", "LOW", "INFO"],
+            "default": "MEDIUM"
+          },
+          "category": {
+            "type": "string",
+            "default": "Custom Rules"
+          },
+          "pattern": {
+            "type": "string",
+            "description": "Regular expression pattern (remember to double-escape backslashes in JSON strings)."
+          },
+          "flags": {
+            "type": "string",
+            "default": "",
+            "description": "RegExp flags (e.g. 'i', 'g', 'm')."
+          },
+          "message": {
+            "type": "string",
+            "description": "Clear explanation of the violation."
+          },
+          "cwe": {
+            "type": "string",
+            "description": "Common Weakness Enumeration ID (e.g. CWE-798)."
+          },
+          "remediation": {
+            "type": "string",
+            "description": "Actionable instructions to remediate the flaw."
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,37 @@
+name: Security & Compliance Scan (sec-guard)
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  schedule:
+    - cron: '0 4 * * 1' # Weekly Monday scan
+
+permissions:
+  contents: read
+  security-events: write # Required for GitHub Code Scanning tab
+
+jobs:
+  audit:
+    name: Run sec-guard & Upload SARIF
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run sec-guard Audit (SARIF)
+        run: npx sec-guard . --format sarif --output results.sarif
+        continue-on-error: true # Ensure SARIF uploads even when issues are flagged
+
+      - name: Upload SARIF to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: results.sarif
+          category: sec-guard

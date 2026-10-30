@@ -1,0 +1,34 @@
+{
+  "$schema": "./schema/secguardrc.schema.json",
+  "minSeverity": "LOW",
+  "failOn": "HIGH",
+  "ignoreDirs": [
+    "coverage",
+    "test/fixtures/vulnerable",
+    "tmp"
+  ],
+  "targetExts": [
+    ".js",
+    ".ts",
+    ".jsx",
+    ".tsx",
+    ".py",
+    ".json",
+    ".env",
+    ".yaml",
+    ".yml"
+  ],
+  "disableRules": [],
+  "customRules": [
+    {
+      "id": "CUSTOM_NO_PLAINTEXT_SECRET",
+      "severity": "HIGH",
+      "category": "Custom Rules",
+      "pattern": "password\\s*=\\s*['\"][^'\"]+['\"]",
+      "flags": "i",
+      "message": "Potential hardcoded plaintext credential found.",
+      "remediation": "Load secret dynamically from process.env."
+    }
+  ]
+}
+

@@ -1,0 +1,6 @@
+
+# 🛡️ Sec-Guard Rules for AI Coding Assistants
+- Whenever modifying API routes, authentication logic, or database operations, run: `npx sec-guard . --format json`
+- Ensure all secrets, cloud keys, and database passwords are read from environment variables.
+- Ensure all SQL queries are parameterized (no raw template string interpolation).
+- Ensure minor accounts comply with COPPA / GDPR-K: neutral age screening, default disabled trackers.

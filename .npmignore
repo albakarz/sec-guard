@@ -1,0 +1,11 @@
+test/
+.github/
+.vscode/
+.idea/
+coverage/
+results.sarif
+*.log
+.DS_Store
+tmp/
+main.md
+

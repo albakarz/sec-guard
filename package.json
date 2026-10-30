@@ -1,0 +1,62 @@
+{
+  "name": "sec-guard",
+  "version": "1.0.0",
+  "description": "Autonomous security, privacy, and compliance scanner for modern apps, AI coding agents, and CI/CD pipelines.",
+  "type": "module",
+  "main": "./src/index.js",
+  "bin": {
+    "sec-guard": "./bin/sec-guard.js",
+    "app-sec-guard": "./bin/sec-guard.js"
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./rules": "./src/rules/index.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    ".agents",
+    ".claude",
+    ".cursorrules",
+    ".windsurfrules",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md"
+  ],
+  "scripts": {
+    "test": "node --test test/sec-guard.test.js",
+    "scan": "node ./bin/sec-guard.js .",
+    "scan:json": "node ./bin/sec-guard.js . --format json",
+    "scan:sarif": "node ./bin/sec-guard.js . --format sarif -o results.sarif"
+  },
+  "keywords": [
+    "security",
+    "security-scanner",
+    "sast",
+    "vulnerability-scanner",
+    "secrets-detection",
+    "sql-injection",
+    "coppa",
+    "gdpr-k",
+    "ai-agent",
+    "cursor",
+    "claude-code",
+    "antigravity",
+    "codex",
+    "sarif",
+    "github-actions"
+  ],
+  "author": "Albakarz",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Albakarz/sec-guard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Albakarz/sec-guard/issues"
+  },
+  "homepage": "https://github.com/Albakarz/sec-guard#readme"
+}

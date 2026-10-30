@@ -1,3 +1,4 @@
+import { VERSION } from '../version.js';
 /**
  * OASIS Static Analysis Results Interchange Format (SARIF) v2.1.0
  * Fully compliant with GitHub Code Scanning (upload-sarif action)
@@ -79,7 +80,7 @@ export function formatSarif(scanResult) {
         tool: {
           driver: {
             name: 'sec-guard',
-            version: '1.0.1',
+            version: VERSION,
             informationUri: 'https://github.com/Albakarz/sec-guard',
             rules: Array.from(ruleMap.values())
           }
